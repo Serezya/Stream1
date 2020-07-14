@@ -13,7 +13,16 @@ public class Main {
                     listEnd.add(i);
             }
         }
-        Collections.sort(listEnd);
+        int buf;
+        for (int i = listEnd.size() - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listEnd.get(j) > listEnd.get(j + 1)) {
+                    buf = listEnd.get(j + 1);
+                    listEnd.set(j + 1, listEnd.get(j));
+                    listEnd.set(j, buf);
+                }
+            }
+        }
         System.out.println(listEnd);
         System.out.println("\n----- Теперь со стримами -----");
         StreamMain.main();
